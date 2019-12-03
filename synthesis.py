@@ -202,7 +202,10 @@ def main():
     if not label_dir:
         label_dir = os.path.join(data_root, 'label_{}'.format(args.label))
     test_labels = os.listdir(label_dir)[::-1][:5][::-1]
+
     for label in test_labels:
+        if not label.endswith(".lab"):
+            continue
         label_path = os.path.join(label_dir, label)
         wav_file = os.path.basename(label)[:-4] + '.wav'
         waveform = lab2wav(args, device, label_path, binary_dict, continuous_dict,
