@@ -158,6 +158,9 @@ def main():
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
 
+    #HB
+    label_dir = args.label_dir
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("Using device: {}".format(device))
 
