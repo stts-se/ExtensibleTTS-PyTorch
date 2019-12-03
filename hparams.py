@@ -14,8 +14,14 @@ class hparams:
     lf0_start_idx = 180
     vuv_start_idx = 183
     bap_start_idx = 184
-    duration_linguistic_dim = 416
-    acoustic_linguistic_dim = 425
+
+    #en us
+    #duration_linguistic_dim = 416
+    #acoustic_linguistic_dim = 425
+
+    #sv
+    duration_linguistic_dim = 479
+    acoustic_linguistic_dim = 488
     duration_dim = 5
     acoustic_dim = mgc_dim + lf0_dim + vuv_dim + bap_dim
 

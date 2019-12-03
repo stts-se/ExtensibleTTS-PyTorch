@@ -1,5 +1,5 @@
 
-import os
+import os, sys
 import numpy as np
 from contextlib import ExitStack
 from glob import glob
@@ -24,7 +24,8 @@ class FeatureFileSource(FileDataSource):
         return np.load(path).reshape(-1, self.dim)
 
 
-DATA_ROOT = os.path.join(os.getcwd(), 'datasets/slt_arctic_full_data')
+#DATA_ROOT = os.path.join(os.getcwd(), 'datasets/slt_arctic_full_data')
+DATA_ROOT = os.path.join(os.getcwd(), sys.argv[1])
 
 X = {"duration": [], "acoustic": []}
 Y = {"duration": [], "acoustic": []}

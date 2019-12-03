@@ -9,7 +9,8 @@ from hparams import hparams as hp
 from utils import infolog
 from utils.params import num_params_count
 from pytorch_dataset import FeatureDataset, rnn_collate
-from model import myRNN
+#from model import myRNN
+from model import RNNet
 from lrschedule import noam_learning_rate_decay, step_learning_rate_decay
 
 global_step = 0
@@ -153,10 +154,14 @@ def main():
 
     # Build model, create optimizer
     if args.train_model == 'duration':
-        model = myRNN(
+        #model = myRNN(
+        #    hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers, bidirectional=True).to(device)
+        model = RNNet(
             hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers, bidirectional=True).to(device)
     else:
-        model = myRNN(
+        #model = myRNN(
+        #    hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers, bidirectional=True).to(device)
+        model = RNNet(
             hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers, bidirectional=True).to(device)
 
     optimizer = torch.optim.Adam(model.parameters(),

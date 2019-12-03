@@ -171,14 +171,14 @@ def main():
     binary_dict, continuous_dict = hts.load_question_set(os.path.join(data_root, args.question))
 
     # Build model
-    duration_model = DurationModel(
-        hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers)
-    acoustic_model = AcousticModel(
-        hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers)
-    # duration_model = RNNet(
-    #     hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers, bidirectional=True)
-    # acoustic_model = RNNet(
-    #     hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers, bidirectional=True)
+    #duration_model = DurationModel(
+    #    hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers)
+    #acoustic_model = AcousticModel(
+    #    hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers)
+    duration_model = RNNet(
+        hp.duration_linguistic_dim, hp.hidden_size, hp.duration_dim, hp.num_layers, bidirectional=True)
+    acoustic_model = RNNet(
+        hp.acoustic_linguistic_dim, hp.hidden_size, hp.acoustic_dim, hp.num_layers, bidirectional=True)
 
     # Load checkpoint
     duration_log_dir = os.path.join(data_root, 'logs-duration')
