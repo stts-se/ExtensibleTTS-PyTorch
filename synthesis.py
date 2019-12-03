@@ -146,6 +146,8 @@ def main():
     parser.add_argument('--base_dir', default=os.path.expanduser(os.getcwd()))
     parser.add_argument('--data', default='datasets/slt_arctic_full_data')
     parser.add_argument('--label', required=True, choices=['state_align', 'phone_align'])
+    #HB
+    parser.add_argument('--label_dir', required=False, default=None)
     parser.add_argument('--question', default='questions-radio_dnn_416.hed')
     parser.add_argument('--duration_checkpoint', required=True, help='Path to duration model checkpoint')
     parser.add_argument('--acoustic_checkpoint', required=True, help='Path to acoustic model checkpoint')
@@ -194,7 +196,8 @@ def main():
     print("loading acoustic model from checkpoint:{}".format(acoustic_checkpoint_path))
 
     # Label to waveform
-    label_dir = os.path.join(data_root, 'label_{}'.format(args.label))
+    if not label_dir:
+        label_dir = os.path.join(data_root, 'label_{}'.format(args.label))
     test_labels = os.listdir(label_dir)[::-1][:5][::-1]
     for label in test_labels:
         label_path = os.path.join(label_dir, label)
